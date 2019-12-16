@@ -2,7 +2,7 @@
 
 SpringCloud Greenwich Version Example
 
-![SpringCloud](https://img.shields.io/badge/Spring-SpringCloud-green.svg?style=plastic)
+![SpringCloud](https://img.shields.io/badge/Spring-SpringCloud-green.svg?style=plastic&logo=spring)
 
 
 # 1 项目说明
