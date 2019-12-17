@@ -3,13 +3,25 @@ server:
 
 eureka:
   instance:
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
     hostname: peer2
-    prefer-ip-address: true
-    ip-address: 127.0.0.1
+    # Eureka Server至上一次收到Eureka Client的心跳之后，等待下一次心跳的超时时间，在这个时间内若没收到下一次心跳，则将移除该instance。默认，90s
+    lease-expiration-duration-in-seconds: 30
+    # Eureka Client发送心跳给server端的频率。如果在leaseExpirationDurationInSeconds后，Eureka Server端没有收到Eureka Client的心跳，则将摘除该instance。默认，30s
+    lease-renewal-interval-in-seconds: 5
+  server:
+    # 是否开启自我保护模式，默认为true。一旦进入该模式，Eureka Server就会保护服务注册表中的信息，不再删除服务注册表中的数据（也就是不会注销任何微服务）。当网络故障恢复后，该Eureka Server节点会自动退出自我保护模式
+#    enable-self-preservation: true
+    # Eureka Server清理无效节点的时间间隔，默认60000ms，即60s
+    eviction-interval-timer-in-ms: 5000
   client:
-    # 不在注册中心注册自己
-    register-with-eureka: false
-    # 表示自己就是注册中心，不需要检索服务，只需要维护服务实例
-    fetch-registry: false
     serviceUrl:
-      defaultZone: http://peer1:10000/eureka/
+      # 集群模式时，除自身以外的其它Eureka Server(使用eureka.instance.hostname:server.port)，多个Eureka Server通过英文逗号分隔
+      defaultZone: http://eugene:eugene@peer1:10000/eureka/
+
+logging:
+  level:
+    com:
+      netflix:
+        eureka: off
+        discovery: off

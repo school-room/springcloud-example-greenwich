@@ -3,10 +3,13 @@ server:
 
 eureka:
   instance:
+    # 如果开启了此配置会导致集群不可用，开启后通过eureka.instance.ip-address指定IP(集群模式关闭不配置)
     prefer-ip-address: true
     ip-address: 127.0.0.1
   client:
+    # 不在注册中心注册自己(集群模式不配置，使用默认值true)
     registerWithEureka: false
+    # 表示自己就是注册中心，不需要检索服务，只需要维护服务实例(集群模式不配置，使用默认值true)
     fetchRegistry: false
     serviceUrl:
       defaultZone: http://${eureka.instance.ip-address}:${server.port}/eureka/
