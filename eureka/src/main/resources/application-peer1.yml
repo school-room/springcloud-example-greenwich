@@ -4,6 +4,7 @@ server:
 eureka:
   instance:
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    # hostname需要在hosts文件配置
     hostname: peer1
     # Eureka Server至上一次收到Eureka Client的心跳之后，等待下一次心跳的超时时间，在这个时间内若没收到下一次心跳，则将移除该instance。默认，90s
     lease-expiration-duration-in-seconds: 30
