@@ -41,7 +41,7 @@
 		<logstash.logback.encoder.version>6.1</logstash.logback.encoder.version>
 		<logback.redis.appender.version>1.1.5</logback.redis.appender.version>
 		<logback.kafka.appender.version>0.2.0-RC2</logback.kafka.appender.version>
-		<junit.version>4.12</junit.version>
+		<junit.version>4.13.1</junit.version>
 		<eugene.springcloud.pojo.version>1.0.0-SNAPSHOT</eugene.springcloud.pojo.version>
 	</properties>
 
